@@ -1,18 +1,23 @@
-# skills-library — LearnLoop Claude marketplace
+# skills-library — UvA AI Chat extension
 
-Een marketplace van plugins en skills gebouwd door LearnLoop voor Claude Cowork, Claude Code en Claude Desktop. Ontwikkeld vanuit de LearnLoop-pilot voor het UvA-project *Slimmer Collegejaar* (2024–2026).
+Een Claude plugin marketplace die de **UvA AI Chat** uitbreidt met AI-nakijken voor docenten. Ontwikkeld vanuit de LearnLoop-pilot binnen het UvA-project *Slimmer Collegejaar* (2024–2026).
 
-## Wat is dit repo?
+## Wat dit is
 
-Een Claude **plugin marketplace** — één git-repo met daarin één of meer plugins, elk met skills, commands, en (optioneel) MCP servers. Cowork-gebruikers installeren een plugin met één klik; Claude Code-gebruikers registreren de marketplace en installeren plugins eruit.
+Een set Claude-skills die docenten direct kunnen aanroepen vanuit de UvA AI Chat (en vanuit Claude Desktop / Cowork) om:
+
+1. een **rubric** te bouwen uit een beoordelingsformulier, opdrachtomschrijving of screenshot, en
+2. **studentwerk te beoordelen** tegen die rubric, met per-cluster sub-agents die elk een deel van de rubric grondig nalopen, en als output een Excel-rapport met eindcijfer en onderbouwde motiveringen.
+
+Net zoals skills in Claude Desktop automatisch triggeren op de juiste vraag, triggeren ze ook in de UvA AI Chat zodra die plugin-ondersteuning aanzet. Docent typt *"maak hier een rubric van"* of *"evalueer deze scriptie"* — de skill doet de rest.
 
 ## Structuur
 
 ```
 skills-library/
 ├── .claude-plugin/
-│   └── marketplace.json              ← lijst van alle plugins in dit repo
-├── slimmer-collegejaar-plugin/       ← één folder per plugin
+│   └── marketplace.json              ← marketplace-manifest
+├── slimmer-collegejaar-plugin/       ← één plugin (later komen er meer)
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   └── skills/
@@ -26,35 +31,32 @@ skills-library/
 └── README.md
 ```
 
-Het marketplace-manifest in `.claude-plugin/marketplace.json` is de single source of truth — elke plugin-folder moet daar geregistreerd staan.
+`marketplace.json` is de single source of truth — elke plugin moet daar geregistreerd staan voordat de UvA AI Chat / Claude Desktop hem ziet.
 
 ## Plugins in deze marketplace
 
 | Plugin | Wat het doet |
 |---|---|
-| [`slimmer-collegejaar`](./slimmer-collegejaar-plugin) | AI-nakijken toolkit: zet een beoordelingsformulier om in een rubric en beoordeelt studentwerk per cluster met sub-agents. Output is een Excel-rapport met eindcijfer, per-criterium scores en motiveringen met bewijs uit het studentwerk. |
+| [`slimmer-collegejaar`](./slimmer-collegejaar-plugin) | AI-nakijken toolkit. Bundelt `rubric-builder` (beoordelingsformulier → gestructureerde rubric) en `rubric-evaluator` (rubric + studentwerk → Excel-rapport met eindcijfer en per-criterium motivering mét bewijs uit het werk). |
 
 ## Installeren
 
-In Claude Cowork of Claude Code:
+In de UvA AI Chat of Claude Desktop / Cowork:
 
 ```
 /plugin marketplace add LearnLoopOrg/skills-library
 /plugin install slimmer-collegejaar@skills-library
 ```
 
-Daarna triggeren de skills automatisch wanneer je:
+Daarna triggeren de skills automatisch op vragen zoals:
 
-- een beoordelingsformulier of opdrachtbeschrijving deelt en zegt *"maak hier een rubric van"*
-- een rubric + studentdocument hebt en zegt *"evalueer deze scriptie"*
-
-## Zonder Claude Desktop / Cowork
-
-Voor docenten zonder Claude Desktop is er ook een Python-versie van de evaluator-flow — zie [`INSTALL.md`](./INSTALL.md).
+- *"maak een rubric van dit beoordelingsformulier"*
+- *"evalueer deze scriptie met de rubric"*
+- *"nakijken volgens de rubric die we hadden gemaakt"*
 
 ## Bijdragen
 
-Nieuwe plugins gaan in een eigen top-level folder. Registreer ze altijd in `.claude-plugin/marketplace.json` voordat je merget — Claude vindt alleen plugins die daar staan.
+Nieuwe plugins gaan in een eigen top-level folder met dezelfde structuur (`<plugin>/.claude-plugin/plugin.json` + `<plugin>/skills/<skill>/SKILL.md`) en moeten geregistreerd worden in `.claude-plugin/marketplace.json` — anders wordt de plugin niet gevonden.
 
 ## Licentie
 
@@ -62,4 +64,4 @@ MIT — zie `LICENSE`.
 
 ## Contact
 
-LearnLoop · onderdeel van UvA-project *Slimmer Collegejaar*.
+LearnLoop · onderdeel van het UvA-project *Slimmer Collegejaar*.

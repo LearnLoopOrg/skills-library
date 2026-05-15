@@ -1,54 +1,38 @@
 # Installeren
 
-Twee manieren om deze skills te gebruiken.
+Deze plugin is bedoeld voor de UvA AI Chat en werkt daarnaast in Claude Desktop / Cowork — overal waar Claude-skills draaien.
 
-## 1. Als Claude Desktop / Cowork plugin (aanbevolen)
+## Marketplace registreren en plugin installeren
 
-Via de marketplace-registratie:
+In de UvA AI Chat of Claude Desktop / Cowork:
 
 ```
 /plugin marketplace add LearnLoopOrg/skills-library
 /plugin install slimmer-collegejaar@skills-library
 ```
 
-Herstart Claude Desktop. De skills triggeren daarna automatisch wanneer je:
+Eventueel even de chat herstarten. Daarna triggeren de skills automatisch.
 
-- een rubric of beoordelingsformulier deelt en zegt *"maak hier een rubric van"*
-- een rubric.json + studentdocument hebt en zegt *"evalueer deze scriptie"*
+## Gebruiken in de chat
 
-## 2. Als losstaand Python-script (zonder Claude Desktop)
+**Een rubric bouwen** — upload of plak een beoordelingsformulier, opdrachtomschrijving of screenshot van een rubric, en zeg:
 
-Voor docenten zonder Cowork-toegang:
+> "Maak hier een rubric van"
 
-```bash
-git clone https://github.com/LearnLoopOrg/skills-library.git
-cd skills-library/slimmer-collegejaar-plugin/skills/rubric-evaluator
+De `rubric-builder` skill levert een gestructureerde `rubric.json` met clusters, criteria, gewichten en niveaus.
 
-pip install anthropic openpyxl
-export ANTHROPIC_API_KEY=sk-ant-xxx
+**Studentwerk nakijken** — geef de rubric en het studentdocument (PDF, docx, of plain text), en zeg:
 
-python scripts/run_demo.py \
-  --rubric examples/sample-rubric.json \
-  --student-work examples/sample-student-report.txt \
-  --output examples/evaluation_report.xlsx
-```
+> "Evalueer deze scriptie met de rubric"
 
-Open `evaluation_report.xlsx` voor het eindcijfer, per-cluster scores en per-criterium motiveringen.
+De `rubric-evaluator` skill verdeelt de rubric over sub-agents (één per cluster), beoordeelt elk onderdeel apart en levert een Excel-rapport met eindcijfer, per-cluster scores en per-criterium motiveringen met bewijs uit het werk.
 
-## Vereisten
+## Eigen rubric
 
-- **Plugin-route**: Claude Desktop (Mac/Windows/Linux) of Cowork met plugin-functionaliteit.
-- **Python-route**: Python 3.10+ en een Anthropic API key (zie https://console.anthropic.com).
-
-## Eigen rubric gebruiken
-
-Twee opties:
-
-1. Maak een `rubric.json` met de structuur uit `slimmer-collegejaar-plugin/skills/rubric-evaluator/examples/sample-rubric.json`.
-2. Geef je beoordelingsformulier (PDF, screenshot, Word-doc) aan de `rubric-builder` skill in Claude Desktop en laat 'm de JSON voor je genereren.
-
-**Wat moet kloppen in een rubric:**
+Zie `slimmer-collegejaar-plugin/skills/rubric-evaluator/examples/sample-rubric.json` voor de verwachte structuur. Wat moet kloppen:
 
 - Cluster-gewichten tellen op tot `total_points`.
 - Criteria-gewichten binnen een cluster tellen op tot het cluster-gewicht.
 - Elk criterium heeft minimaal 3 levels met observeerbare indicators.
+
+Of laat de `rubric-builder` skill het voor je doen op basis van je bestaande beoordelingsformulier — dat is meestal de snelste route.
