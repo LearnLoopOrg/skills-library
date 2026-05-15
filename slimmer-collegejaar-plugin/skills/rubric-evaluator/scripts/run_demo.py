@@ -10,9 +10,9 @@ Usage:
     export ANTHROPIC_API_KEY=sk-ant-...
 
     python run_demo.py \
-        --rubric ../../examples/sample-rubric.json \
-        --student-work ../../examples/sample-student-report.txt \
-        --output ../../examples/evaluation_report.xlsx
+        --rubric ../examples/sample-rubric.json \
+        --student-work ../examples/sample-student-report.txt \
+        --output ../examples/evaluation_report.xlsx
 """
 from __future__ import annotations
 

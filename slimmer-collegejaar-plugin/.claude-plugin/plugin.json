@@ -1,0 +1,20 @@
+{
+  "name": "slimmer-collegejaar",
+  "version": "0.1.0",
+  "description": "AI-nakijken toolkit ontwikkeld vanuit de LearnLoop-pilot voor het UvA-project Slimmer Collegejaar. Bundelt rubric-builder (zet een beoordelingsformulier om in een gestructureerde rubric) en rubric-evaluator (beoordeelt studentwerk tegen die rubric via per-cluster sub-agents en produceert een Excel-rapport met eindcijfer en onderbouwde motiveringen).",
+  "author": {
+    "name": "LearnLoop"
+  },
+  "keywords": [
+    "learnloop",
+    "slimmer-collegejaar",
+    "uva",
+    "nakijken",
+    "grading",
+    "rubric",
+    "evaluation",
+    "education",
+    "scriptie",
+    "feedback"
+  ]
+}

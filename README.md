@@ -1,38 +1,60 @@
-# Slimmer Collegejaar — AI-nakijken skills
+# skills-library — LearnLoop Claude marketplace
 
-Open-source skills voor het automatisch genereren van rubrics en het beoordelen van studentwerk met AI. Ontwikkeld vanuit de LearnLoop-pilot (UvA, 2024–2026, project "Slimmer Collegejaar").
+Een marketplace van plugins en skills gebouwd door LearnLoop voor Claude Cowork, Claude Code en Claude Desktop. Ontwikkeld vanuit de LearnLoop-pilot voor het UvA-project *Slimmer Collegejaar* (2024–2026).
 
-## Wat zit erin
+## Wat is dit repo?
 
-Twee samenwerkende Claude-skills:
+Een Claude **plugin marketplace** — één git-repo met daarin één of meer plugins, elk met skills, commands, en (optioneel) MCP servers. Cowork-gebruikers installeren een plugin met één klik; Claude Code-gebruikers registreren de marketplace en installeren plugins eruit.
 
-**`rubric-builder/`** — Zet een opdrachtbeschrijving, beoordelingsformulier of screenshot om in een gestructureerde rubric met criteria, weegfactoren en logische clusters (bijv. *Inleiding*, *Methoden*, *Resultaten*).
+## Structuur
 
-**`rubric-evaluator/`** — Beoordeelt een studentdocument tegen die rubric. Voor elk cluster wordt een sub-agent gespawnd die alleen díe criteria toetst — zo blijft de beoordeling per onderdeel scherp in plaats van vaag-over-het-geheel. Output is een Excel-rapport met per criterium een score, motivering en eindcijfer.
-
-## Waarom deze opzet
-
-Bij het beoordelen van studentwerk loopt een enkele AI-prompt al snel vast: te veel criteria tegelijk → vlakke, gemiddelde scores. Door per cluster een eigen sub-agent te draaien forceer je dat elk onderdeel daadwerkelijk apart bekeken wordt. Dit volgt het principe dat ook in de LearnLoop-pilot is bevestigd: kleinere, gerichte beoordelingsvragen leveren bruikbaardere feedback dan één grote.
-
-## Snel proberen
-
-```bash
-# Vereist: Python 3.10+, een ANTHROPIC_API_KEY
-pip install anthropic openpyxl
-export ANTHROPIC_API_KEY=sk-ant-...
-
-# Voorbeeld: rubric maken + werk beoordelen
-python rubric-evaluator/scripts/run_demo.py \
-  --rubric examples/sample-rubric.txt \
-  --student-work examples/sample-student-report.txt \
-  --output examples/evaluation_report.xlsx
+```
+skills-library/
+├── .claude-plugin/
+│   └── marketplace.json              ← lijst van alle plugins in dit repo
+├── slimmer-collegejaar-plugin/       ← één folder per plugin
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   └── skills/
+│       ├── rubric-builder/
+│       │   └── SKILL.md
+│       └── rubric-evaluator/
+│           ├── SKILL.md
+│           ├── agents/
+│           ├── scripts/
+│           └── examples/
+└── README.md
 ```
 
-Of installeer als Claude-skill: zie `INSTALL.md`.
+Het marketplace-manifest in `.claude-plugin/marketplace.json` is de single source of truth — elke plugin-folder moet daar geregistreerd staan.
 
-## Status
+## Plugins in deze marketplace
 
-Werk-in-uitvoering vanuit de LearnLoop-pilot. Tested op scriptie-evaluaties (biologie, applied data science). Feedback en pull requests welkom.
+| Plugin | Wat het doet |
+|---|---|
+| [`slimmer-collegejaar`](./slimmer-collegejaar-plugin) | AI-nakijken toolkit: zet een beoordelingsformulier om in een rubric en beoordeelt studentwerk per cluster met sub-agents. Output is een Excel-rapport met eindcijfer, per-criterium scores en motiveringen met bewijs uit het studentwerk. |
+
+## Installeren
+
+In Claude Cowork of Claude Code:
+
+```
+/plugin marketplace add LearnLoopOrg/skills-library
+/plugin install slimmer-collegejaar@skills-library
+```
+
+Daarna triggeren de skills automatisch wanneer je:
+
+- een beoordelingsformulier of opdrachtbeschrijving deelt en zegt *"maak hier een rubric van"*
+- een rubric + studentdocument hebt en zegt *"evalueer deze scriptie"*
+
+## Zonder Claude Desktop / Cowork
+
+Voor docenten zonder Claude Desktop is er ook een Python-versie van de evaluator-flow — zie [`INSTALL.md`](./INSTALL.md).
+
+## Bijdragen
+
+Nieuwe plugins gaan in een eigen top-level folder. Registreer ze altijd in `.claude-plugin/marketplace.json` voordat je merget — Claude vindt alleen plugins die daar staan.
 
 ## Licentie
 
@@ -40,4 +62,4 @@ MIT — zie `LICENSE`.
 
 ## Contact
 
-LearnLoop · Luc Mahieu · onderdeel van UvA-project *Slimmer Collegejaar*.
+LearnLoop · onderdeel van UvA-project *Slimmer Collegejaar*.

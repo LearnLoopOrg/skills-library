@@ -1,4 +1,13 @@
-# Python
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.cursor/
+.vscode/
+.idea/
+
+# Python build artefacts
 __pycache__/
 *.py[cod]
 *$py.class
@@ -6,13 +15,6 @@ __pycache__/
 .venv/
 venv/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Environment
+# Secrets / local env
 .env
+.env.*

@@ -2,31 +2,32 @@
 
 Twee manieren om deze skills te gebruiken.
 
-## 1. Als Claude Desktop / Cowork skill
+## 1. Als Claude Desktop / Cowork plugin (aanbevolen)
 
-Plaats de mappen `rubric-builder/` en `rubric-evaluator/` in je skills-directory:
+Via de marketplace-registratie:
 
-```bash
-# macOS / Linux
-cp -r rubric-builder rubric-evaluator ~/.claude/skills/
-
-# Of via een plugin: maak een .plugin bundle die deze twee skills bevat
+```
+/plugin marketplace add LearnLoopOrg/skills-library
+/plugin install slimmer-collegejaar@skills-library
 ```
 
-Herstart Claude Desktop. De skills triggeren automatisch wanneer je:
+Herstart Claude Desktop. De skills triggeren daarna automatisch wanneer je:
 
-- een rubric of beoordelingsformulier uploadt en zegt *"maak hier een rubric van"*
-- een rubric.json + studentdocument deelt en zegt *"evalueer deze scriptie"*
+- een rubric of beoordelingsformulier deelt en zegt *"maak hier een rubric van"*
+- een rubric.json + studentdocument hebt en zegt *"evalueer deze scriptie"*
 
-## 2. Als losstaand Python-script
+## 2. Als losstaand Python-script (zonder Claude Desktop)
 
-Voor docenten zonder Claude Desktop:
+Voor docenten zonder Cowork-toegang:
 
 ```bash
+git clone https://github.com/LearnLoopOrg/skills-library.git
+cd skills-library/slimmer-collegejaar-plugin/skills/rubric-evaluator
+
 pip install anthropic openpyxl
 export ANTHROPIC_API_KEY=sk-ant-xxx
 
-python rubric-evaluator/scripts/run_demo.py \
+python scripts/run_demo.py \
   --rubric examples/sample-rubric.json \
   --student-work examples/sample-student-report.txt \
   --output examples/evaluation_report.xlsx
@@ -36,13 +37,18 @@ Open `evaluation_report.xlsx` voor het eindcijfer, per-cluster scores en per-cri
 
 ## Vereisten
 
-- Python 3.10+
-- Voor de skills-route: Claude Desktop (Mac/Windows/Linux) met skills-functionaliteit
-- Voor de Python-route: een Anthropic API key (zie https://console.anthropic.com)
+- **Plugin-route**: Claude Desktop (Mac/Windows/Linux) of Cowork met plugin-functionaliteit.
+- **Python-route**: Python 3.10+ en een Anthropic API key (zie https://console.anthropic.com).
 
 ## Eigen rubric gebruiken
 
-1. Zet je rubric in `rubric.json` met de structuur uit `examples/sample-rubric.json`, of
-2. Geef je beoordelingsformulier (PDF, screenshot, Word-doc) aan de `rubric-builder` skill en laat 'm de JSON voor je genereren.
+Twee opties:
 
-Cluster-gewichten moeten optellen tot `total_points`. Criteria-gewichten binnen een cluster moeten optellen tot het cluster-gewicht.
+1. Maak een `rubric.json` met de structuur uit `slimmer-collegejaar-plugin/skills/rubric-evaluator/examples/sample-rubric.json`.
+2. Geef je beoordelingsformulier (PDF, screenshot, Word-doc) aan de `rubric-builder` skill in Claude Desktop en laat 'm de JSON voor je genereren.
+
+**Wat moet kloppen in een rubric:**
+
+- Cluster-gewichten tellen op tot `total_points`.
+- Criteria-gewichten binnen een cluster tellen op tot het cluster-gewicht.
+- Elk criterium heeft minimaal 3 levels met observeerbare indicators.

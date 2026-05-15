@@ -1,0 +1,14 @@
+{
+  "name": "skills-library",
+  "description": "LearnLoop Claude marketplace — plugins and skills for AI-supported teaching, grading, and student feedback. Built from the LearnLoop UvA pilot.",
+  "owner": {
+    "name": "LearnLoop"
+  },
+  "plugins": [
+    {
+      "name": "slimmer-collegejaar",
+      "source": "./slimmer-collegejaar-plugin",
+      "description": "Tools voor docenten om studentwerk te beoordelen met AI volgens een eigen rubric. Bundelt twee samenwerkende skills: rubric-builder zet een beoordelingsformulier of opdrachtomschrijving om in een gestructureerde rubric, en rubric-evaluator beoordeelt vervolgens een studentartefact tegen die rubric door per cluster van criteria een eigen sub-agent te spawnen — wat scherpere, beter onderbouwde scores oplevert dan één grote prompt. Output is een Excel-rapport met eindcijfer, per-cluster scores en per-criterium motiveringen mét bewijs uit het studentwerk."
+    }
+  ]
+}
