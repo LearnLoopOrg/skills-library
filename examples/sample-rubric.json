@@ -1,0 +1,158 @@
+{
+  "title": "Onderzoeksrapport bachelor (voorbeeld)",
+  "total_points": 100,
+  "clusters": [
+    {
+      "id": "inleiding",
+      "name": "Inleiding",
+      "weight": 15,
+      "criteria": [
+        {
+          "id": "inl_question",
+          "description": "Onderzoeksvraag is helder, afgebakend en relevant",
+          "weight": 8,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Scherpe, afgebakende vraag verankerd in literatuur"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Duidelijke vraag, enigszins breed of weinig literatuurverwijzing"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Vraag is vaag, ontbreekt, of niet relevant"}
+          ]
+        },
+        {
+          "id": "inl_context",
+          "description": "Achtergrond en context worden helder geschetst",
+          "weight": 7,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Compacte, accurate context met passende bronnen"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Context aanwezig maar oppervlakkig of onvolledig"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Geen context of feitelijk onjuist"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "methoden",
+      "name": "Methoden",
+      "weight": 25,
+      "criteria": [
+        {
+          "id": "met_design",
+          "description": "Onderzoeksopzet past bij de onderzoeksvraag",
+          "weight": 15,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Opzet sluit precies aan; alternatieven overwogen"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Opzet werkt maar keuzes worden niet verantwoord"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Opzet past niet bij vraag of is onduidelijk"}
+          ]
+        },
+        {
+          "id": "met_reproducibility",
+          "description": "Methoden zijn reproduceerbaar beschreven",
+          "weight": 10,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Een ander kan de studie naexvolgen op basis van de beschrijving"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Hoofdlijnen duidelijk, details ontbreken"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Niet reproduceerbaar"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resultaten",
+      "name": "Resultaten",
+      "weight": 25,
+      "criteria": [
+        {
+          "id": "res_clarity",
+          "description": "Resultaten worden helder en feitelijk gepresenteerd",
+          "weight": 15,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Heldere figuren/tabellen, interpretatie en data zijn gescheiden"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Resultaten duidelijk maar deels door elkaar met interpretatie"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Onduidelijk of speculatief"}
+          ]
+        },
+        {
+          "id": "res_coherence",
+          "description": "Resultaten beantwoorden de onderzoeksvraag",
+          "weight": 10,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Directe lijn van vraag naar bevinding"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Verband aanwezig maar niet expliciet"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Resultaten staan los van de vraag"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "discussie",
+      "name": "Discussie en conclusie",
+      "weight": 20,
+      "criteria": [
+        {
+          "id": "dis_interpretation",
+          "description": "Interpretatie is onderbouwd en realistisch",
+          "weight": 10,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Interpretatie verankerd in resultaten en literatuur"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Interpretatie plausibel maar weinig onderbouwd"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Speculatief of niet ondersteund"}
+          ]
+        },
+        {
+          "id": "dis_limitations",
+          "description": "Beperkingen en vervolgonderzoek worden benoemd",
+          "weight": 10,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Reflectieve, specifieke beperkingen en concrete vervolgsuggesties"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Algemene reflectie, weinig specifiek"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Niet benoemd of clichématig"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "taal_opmaak",
+      "name": "Taal en opmaak",
+      "weight": 5,
+      "criteria": [
+        {
+          "id": "taal_correctness",
+          "description": "Spelling, grammatica en zinsbouw zijn verzorgd",
+          "weight": 5,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Vrijwel geen fouten, vlot leesbaar"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Enkele fouten maar leesbaar"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Veel fouten, leesbaarheid loopt vast"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bronnen",
+      "name": "Bronnen en bronvermelding",
+      "weight": 10,
+      "criteria": [
+        {
+          "id": "bron_consistency",
+          "description": "Bronvermelding is consistent en compleet",
+          "weight": 5,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Volledig en consistent in één stijl (APA/MLA/Vancouver)"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Grotendeels consistent, kleine fouten"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Inconsistent of incompleet"}
+          ]
+        },
+        {
+          "id": "bron_quality",
+          "description": "Bronnen zijn relevant en peer-reviewed waar passend",
+          "weight": 5,
+          "levels": [
+            {"label": "uitmuntend", "score": 1.0, "indicator": "Veel relevante, peer-reviewed bronnen"},
+            {"label": "voldoende", "score": 0.7, "indicator": "Mix van peer-reviewed en grijze literatuur"},
+            {"label": "onvoldoende", "score": 0.3, "indicator": "Vooral websites of irrelevante bronnen"}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+Het effect van licht-intensiteit op de groei van Elodea canadensis
+
+Inleiding
+Planten gebruiken licht voor fotosynthese. In dit onderzoek kijken we of meer licht ook leidt tot snellere groei bij de waterplant Elodea canadensis. Uit eerder werk (Bamberger 2019; Smith 2021) blijkt dat licht een factor is, maar de relatie tussen intensiteit en groeisnelheid in zoetwaterplanten is minder bestudeerd.
+
+Onderzoeksvraag: Wat is het effect van licht-intensiteit op de gemiddelde lengtegroei van Elodea canadensis over een periode van vier weken?
+
+Methoden
+We gebruikten 12 individuele Elodea-stengels, verdeeld over drie groepen van vier in identieke aquaria met 20 °C water. Elke groep kreeg een andere licht-intensiteit (lage, middel, hoge) via LED-lampen op een vast schema van 12 uur licht / 12 uur donker. Lengte werd elke 4 dagen gemeten met een liniaal. De LED-intensiteit werd niet kwantitatief gemeten in lux — we gebruikten enkel de schakelaarstanden "1", "2" en "3" van de lamp.
+
+Resultaten
+Na vier weken bedroeg de gemiddelde groei: lage intensiteit 1.2 cm, middel 3.8 cm, hoge 4.1 cm. Het verschil tussen lage en middel was groot; tussen middel en hoge bijna verwaarloosbaar. Geen statistische toets uitgevoerd.
+
+Discussie
+De resultaten suggereren dat meer licht leidt tot meer groei, maar er lijkt een verzadigingspunt te zijn. Dit klopt met de algemene fotosynthese-curve. Een beperking is de afwezigheid van een lux-meter. Vervolgonderzoek zou meer planten per groep moeten gebruiken en de licht-intensiteit kwantitatief moeten meten.
+
+Bronvermelding
+Bamberger, J. (2019). Aquatic plants and light. Journal of plant biology.
+Smith, A. (2021). Elodea growth rates. https://example.com/elodea-paper
